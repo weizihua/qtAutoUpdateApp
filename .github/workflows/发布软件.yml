@@ -35,7 +35,7 @@ jobs:
       version: ${{ needs.jobs_v.outputs.version }}
       body: ${{ needs.jobs_v.outputs.body }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: 读入环境信息
@@ -60,7 +60,7 @@ jobs:
           contains: app run success
           expected_result: PASSED
       - name: 上传产物
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: window
           path: ./dist/*.exe
@@ -73,7 +73,7 @@ jobs:
       version: ${{ needs.jobs_v.outputs.version }}
       body: ${{ needs.jobs_v.outputs.body }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: 读入环境信息
@@ -102,7 +102,7 @@ jobs:
           cd ./dist
           zip -r ./my_app_MacOS.zip ./my_app.app
       - name: 上传产物
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: macos
           path: ./dist/*.zip
@@ -118,7 +118,7 @@ jobs:
     steps:
       - name: 下载产物
         id: download
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       - name: 读入环境信息
